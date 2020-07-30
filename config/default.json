@@ -1,6 +1,11 @@
 {
     "domains": {
-        "thepiratebay": "https://apibay.org/q.php?",
+        "thepiratebay": {
+            "search": "https://apibay.org/q.php?",
+            "top100movies": "https://apibay.org/precompiled/data_top100_207.json",
+            "top100tvshows": "https://apibay.org/precompiled/data_top100_205.json",
+            "top100music": "https://apibay.org/precompiled/data_top100_101.json"
+        },
         "1337x": "https://apibay.org"
     }
 }
