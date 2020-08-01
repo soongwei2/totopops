@@ -17,10 +17,11 @@ router.get('/searchGET', function (req, res, next) {
     return thepiratebay.get(type, search).then((results) => {
         if(!results || !results.length){
             leetx.get(type, search).then((results) => {
-                return res.status(200).send(results);
+                return res.status(200).send(
+                    {results});
             })
         }else{
-            return res.status(200).send(results);
+            return res.status(200).send({results});
         }
 
       
