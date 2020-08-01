@@ -6,6 +6,12 @@
             "top100tvshows": "https://apibay.org/precompiled/data_top100_205.json",
             "top100music": "https://apibay.org/precompiled/data_top100_101.json"
         },
-        "1337x": "https://apibay.org"
+        "leetx": {
+            "url":"https://1337x.to",
+            "search": "https://1337x.to/search/",
+            "top100movies": "https://1337x.to/top-100-movies",
+            "top100tvshows": "https://1337x.to/top-100-television",
+            "top100music": "https://1337x.to/top-100-music"
+        }
     }
 }
