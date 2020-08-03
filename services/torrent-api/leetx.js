@@ -41,7 +41,7 @@ const searchAPI = (search = '') => {
 
   let reqUrl = config.domains.leetx.search + encodeURIComponent(search) + '/1/';
 
-  return got(reqUrl).then(data => {
+  return got(reqUrl,{timeout: config.domains.leetx.timeout}).then(data => {
     let $ = cheerio.load(data.body);
 
     let table = $('tbody > tr');
@@ -83,7 +83,7 @@ const searchAPI = (search = '') => {
  */
 
 const info = url => {
-  return got(url).then(data => {
+  return got(url,{timeout: config.domains.leetx.timeout}).then(data => {
     let $detail = cheerio.load(data.body);
     let $content = cheerio.load($detail.html());
 
@@ -126,7 +126,7 @@ const info = url => {
 
 function top100API(url) {
 
-  return got(url).then(data => {
+  return got(url,{timeout: config.domains.leetx.timeout}).then(data => {
     let $ = cheerio.load(data.body);
 
     let table = $('tbody > tr');

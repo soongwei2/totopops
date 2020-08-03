@@ -2,7 +2,9 @@ const axios = require('axios');
 const config = require('config');
 const pretty = require('prettysize');
 const errorCodes = require('../../utilities/handler/error.codes');
-const { parameterHandler } = require('../../utilities/handler/errorDef');
+const {
+  parameterHandler
+} = require('../../utilities/handler/errorDef');
 
 module.exports = {
   get(type = 0, search = '') {
@@ -24,6 +26,7 @@ module.exports = {
 
 function searchAPI(search = '') {
   return axios.get(config.domains.thepiratebay.search, {
+      timeout: config.domains.thepiratebay.timeout,
       params: {
         q: search,
         cat: '',
@@ -35,20 +38,22 @@ function searchAPI(search = '') {
       });
     })
     .catch((error) => {
-      console.error("searchAPI: " , error);
+      console.error("searchAPI: ", error);
       return [];
     });
 }
 
 function top100API(url) {
-  return axios.get(url)
+  return axios.get(url, {
+      timeout: config.domains.thepiratebay.timeout
+    })
     .then(function (response) {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);
       });
     })
     .catch((error) => {
-      console.error("searchAPI: " , error);
+      console.error("searchAPI: ", error);
       return [];
     });
 }
