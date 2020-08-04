@@ -3,7 +3,7 @@
         "thepiratebay": {
             "search": "https://apibay.org/q.php?",
             "top100movies": "https://apibay.org/precompiled/data_top100_207.json",
-            "top100tvshows": "https://apibay.org/precompiled/data_top100_205.json",
+            "top100tvshows": "https://apibay.org/precompiled/data_top100_208.json",
             "top100music": "https://apibay.org/precompiled/data_top100_101.json",
             "timeout": 4000
         },
