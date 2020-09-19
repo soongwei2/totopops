@@ -1,6 +1,6 @@
 {
   "name": "web-service",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "A web service for Fruit Basket.",
   "private": true,
   "main": "server.js",
