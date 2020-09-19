@@ -113,7 +113,7 @@ const info = url => {
     if(info && info.category == 'Movies'){
       info.category = 'Movies';
     }else if(info && info.category == 'TV'){
-      info.category = 'TV Shows';
+      info.category = 'TV';
     }else if(info && info.category == 'Music'){
       info.category = 'Music';
     }else{
