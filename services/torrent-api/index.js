@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const thepiratebay = require('./thepiratebay');
 const leetx = require('./leetx');
+const config = require('config');
 const {
     parameterHandler
 } = require('../../utilities/handler/errorDef');
@@ -15,7 +16,7 @@ router.get('/searchGET', function (req, res, next) {
     parameterHandler([type]);
 
     return thepiratebay.get(type, search).then((results) => {
-        if(!results || !results.length){
+        if(!results || !results.length || !config.domains.thepiratebay.enabled){
             leetx.get(type, search).then((results) => {
                 return res.status(200).send(
                     {results});

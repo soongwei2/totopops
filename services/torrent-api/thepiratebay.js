@@ -2,16 +2,10 @@ const axios = require('axios');
 const config = require('config');
 const pretty = require('prettysize');
 const errorCodes = require('../../utilities/handler/error.codes');
-const {
-  parameterHandler
-} = require('../../utilities/handler/errorDef');
+const { parameterHandler } = require('../../utilities/handler/errorDef');
 
 module.exports = {
   get(type = 0, search = '') {
-
-    if(!config.domains.thepiratebay.enabled)
-      return [];
-
     switch (Number.parseInt(type)) {
       case 0: //search
         return searchAPI(search);
@@ -30,7 +24,6 @@ module.exports = {
 
 function searchAPI(search = '') {
   return axios.get(config.domains.thepiratebay.search, {
-      timeout: config.domains.thepiratebay.timeout,
       params: {
         q: search,
         cat: '',
@@ -40,25 +33,15 @@ function searchAPI(search = '') {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);
       });
-    })
-    .catch((error) => {
-      console.error("searchAPI: ", error);
-      return [];
     });
 }
 
 function top100API(url) {
-  return axios.get(url, {
-      timeout: config.domains.thepiratebay.timeout
-    })
+  return axios.get(url)
     .then(function (response) {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);
       });
-    })
-    .catch((error) => {
-      console.error("searchAPI: ", error);
-      return [];
     });
 }
 
@@ -86,7 +69,7 @@ function getPath(category = 0) {
     return 'Movies';
   } else if (category == 205 ||
     category == 208) {
-    return 'TV';
+    return 'TV Shows';
   } else if (category == 101 ||
     category == 203) {
     return 'Music';
