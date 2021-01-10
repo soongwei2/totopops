@@ -12,7 +12,7 @@ const cheerio = require('cheerio'),
   module.exports = {
     get(type = 0, search = '') {
 
-      if(!config.domains.thepiratebay.enabled)
+      if(!config.domains.leetx.enabled)
         return [];
 
       switch (Number.parseInt(type)) {
