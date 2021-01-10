@@ -8,6 +8,10 @@ const {
 
 module.exports = {
   get(type = 0, search = '') {
+
+    if(!config.domains.thepiratebay.enabled)
+      return [];
+
     switch (Number.parseInt(type)) {
       case 0: //search
         return searchAPI(search);
