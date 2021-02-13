@@ -33,6 +33,9 @@ function searchAPI(search = '') {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);
       });
+    })
+    .catch((reason) => {
+      return [];
     });
 }
 
@@ -42,6 +45,8 @@ function top100API(url) {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);
       });
+    }).catch((reason) => {
+      return [];
     });
 }
 

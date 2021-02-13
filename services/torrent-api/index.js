@@ -17,7 +17,7 @@ router.get('/searchGET', function (req, res, next) {
 
     return thepiratebay.get(type, search).then((results) => {
         if(!results || !results.length || !config.domains.thepiratebay.enabled){
-            leetx.get(type, search).then((results) => {
+            return leetx.get(type, search).then((results) => {
                 return res.status(200).send(
                     {results});
             })
