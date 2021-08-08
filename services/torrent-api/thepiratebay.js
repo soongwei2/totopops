@@ -74,7 +74,7 @@ function getPath(category = 0) {
     return 'Movies';
   } else if (category == 205 ||
     category == 208) {
-    return 'TV Shows';
+    return 'TV';
   } else if (category == 101 ||
     category == 203) {
     return 'Music';
