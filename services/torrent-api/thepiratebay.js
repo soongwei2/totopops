@@ -27,7 +27,8 @@ function searchAPI(search = '') {
       params: {
         q: search,
         cat: '',
-      }
+      },
+      timeout: config.domains.thepiratebay.timeout,
     })
     .then(function (response) {
       return response.data.filter(x => x.id != 0).map((eachData) => {
@@ -40,7 +41,7 @@ function searchAPI(search = '') {
 }
 
 function top100API(url) {
-  return axios.get(url)
+  return axios.get(url, {timeout: config.domains.thepiratebay.timeout})
     .then(function (response) {
       return response.data.filter(x => x.id != 0).map((eachData) => {
         return parseEachTorrent(eachData);

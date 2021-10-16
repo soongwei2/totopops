@@ -8,27 +8,25 @@ const {
 } = require('../../utilities/handler/errorDef');
 
 
-router.get('/searchGET', function (req, res, next) {
+router.get('/searchGET', async function (req, res, next) {
 
     const type = req.query.type;
     const search = req.query.search;
 
     parameterHandler([type]);
 
-    return thepiratebay.get(type, search).then((results) => {
-        if(!results || !results.length || !config.domains.thepiratebay.enabled){
-            return leetx.get(type, search).then((results) => {
-                return res.status(200).send(
-                    {results});
-            })
-        }else{
-            return res.status(200).send({results});
-        }
+    let results = [];
+    if(!results.length && config.domains.thepiratebay.enabled){
+        
+        results = await thepiratebay.get(type, search);
+    }
 
-      
-    }).catch((reason) => {
-        next(reason);
-    });
+    if(!results.length && config.domains.leetx.enabled){
+       
+        results = await leetx.get(type, search);
+    }
+    
+    return res.status(200).send({results});
 
 });
 
